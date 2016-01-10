@@ -1,0 +1,78 @@
+<p>Invoice Details.</p>
+
+<div class="control-group">
+    <label class="control-label"
+            >Customer Name</label>
+    <div class="controls">
+        <input name="Customer Name"
+               class="input-small form-control"
+                />
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label"
+            >Date</label>
+    <div class="controls">
+        <input name="Date"
+               class="input-small form-control"
+               ng-model ="todayDate"
+                />
+    </div>
+</div>
+
+<div class="control-group">
+    <label class="control-label"
+            >Invoice Number</label>
+    <div class="controls">
+        <input name="Date"
+               class="input-small form-control"
+               ng-model = "invoiceNumber"
+                />
+    </div>
+</div>
+        <br>
+<div></div>
+<p><a class="btn btn-lg btn-success" ng-click="openProducts()">Select Products</a></p>
+
+<div class="col-sm-8">
+    <h3>Selected Products</h3>
+    <table class="table table-condensed table-bordered">
+        <tr class="active">
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        <tr ng-repeat = "savedProduct in savedProducts">
+            <td><div class="control-group">
+                <input type="text"
+                       name="Product Name"
+                       id="Product-Name"
+                       class="input-xlarge"
+                       ng-model="savedProduct.ProductName"
+                       ng-disabled = "true"/>
+            </div></td>
+            <td><div class="control-group">
+                <input type="text"
+                       name="Product Quantity"
+                       id="Product-Quantity"
+                       class="input-xlarge"
+                       ng-model="savedProduct.Quantity"
+                       ng-disabled = "false"/>
+            </div></td>
+            <td><div class="control-group">
+                <input type="text"
+                       name="Product Price"
+                       id="Product-Price"
+                       class="input-xlarge"
+                       ng-model="savedProduct.Price"
+                       ng-disabled = "false"/>
+            </div></td>
+            <td><div class="control-group">
+                {{savedProduct.Price * savedProduct.Quantity}}
+            </div></td>
+        </tr>
+    </table>
+    <p><a class="btn btn-lg btn-success" ng-click="submit()">Submit Order</a></p>
+    <div ng-show="saveMessage">{{ saveMessage }}</div>
+</div>
